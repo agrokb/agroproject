@@ -19,7 +19,7 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
   ],
-
+  mode:['spa'],
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
 
@@ -31,7 +31,16 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/bootstrap
     '@nuxtjs/bulma',
+    '@nuxtjs/proxy',
+    '@nuxtjs/axios'
   ],
+  proxy:{
+    '/api/':{
+      target:'https://data.coa.gov.tw/Service/OpenData/EIR3010304.aspx',
+      changeOrigin: true,
+      secure: false
+    }
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
