@@ -2,10 +2,12 @@
 <div class="container m-5">
     <h1 class="title">水稻病蟲害警報</h1>
     <div class="alarm">
-       {{ bls[0][0] }}
+     白葉枯病： {{  blsShow }}  </br>
+     褐飛蝨：   {{  bugShow }}
     </div>
     <div class="select">
-    <select>
+    <select v-model="selected" @change="onChange($event)">
+            <option disabled value="">Please select one</option>
             <option value = "新北市">新北市</option>
             <option value = "桃園縣">桃園縣</option>
             <option value = "新竹縣">新竹縣</option>
@@ -64,7 +66,6 @@
 
 <script>
 import axios from '../.nuxt/axios';
-//const url = "http://localhost:3000/api/data.coa.gov.tw/Service/OpenData/EIR3010304.aspx";
 export default {
      data() {
          return {
@@ -72,6 +73,9 @@ export default {
              postion:'',
              bls:'',
              bug:'',
+             selected:'',
+             blsShow:'',
+             bugShow:''
          }
      },
      created(){
@@ -81,46 +85,79 @@ export default {
      methods:{
          scrAlarmDara:async function(){
              let blsData = null
-             await this.$axios.$get(`http://localhost:3000/api/data.coa.gov.tw/Service/OpenData/EIR3010304.aspx`).then((res) => { 
-
-                    //bls data get
-                    let blsData = res[2] 
+             await this.$axios.$get(process.env.baseUrl).then((res) => { 
+                    let blsResult = []
+                    let bugResult = []
+                for (let i = 2; i < 4; i++) {
+                    // data get
+                    let rawData = res[i] 
                     //delete unnecessery data
-                    delete blsData.id
-                    delete blsData.BUG
-                    delete blsData.LIGHTS01
-                    delete blsData.LIGHTS02
-                    delete blsData.LIGHTS03
-                    delete blsData.LIGHTS04
-                    delete blsData.LIGHTS05
-                    delete blsData.LIGHTS06
-                    // Data split
-                    let result = []
-                   for (const data in blsData) {
+                    delete rawData.id
+                    delete rawData.BUG
+                    delete rawData.LIGHTS01
+                    delete rawData.LIGHTS02
+                    delete rawData.LIGHTS03
+                    delete rawData.LIGHTS04
+                    delete rawData.LIGHTS05
+                    delete rawData.LIGHTS06
+
+                   for (const data in rawData) {
                        //city name
-                        let cityData =  blsData[data].split(/[\":]+/)
+                        let cityData =  rawData[data].split(/[\":]+/)
 
                         if (cityData[1] = "ADADAD"){
                             cityData[1] = ""
                         }
-
-                        result.push(cityData)
+                        const resultData = [cityData[0].trim(),cityData[1].trim()]
+                        if(i == 2){
+                            blsResult.push(resultData)
+                        }
+                        if(i == 3){
+                            bugResult.push(resultData)
+                        }
 
                    }
+                    //bls data get
+                    this.bls = blsResult
+                    this.bug = bugResult
+                }
 
-                    this.bls = result
 
-                 
 
            })
-         },
-         dataClean(){
-            let Blb = this.SourcericeAlarmDatas[0];
-            this.testdata = Blb;
          },
          positionSuccess(pos){
                 this.postion = pos.coords;
          },
+         onChange(event) {
+            let blsraw = this.bls
+            let bugraw = this.bug
+            for (const data in blsraw) {
+              // this.blsShow =[event.target.value,blsraw[data][0]]
+
+              if(event.target.value == blsraw[data][0]){
+
+                    this.blsShow =  blsraw[data][1]
+
+                    if(this.blsShow == ""){
+                        this.blsShow = "無災情"
+                    }
+              }
+            }
+            for (const data in bugraw) {
+
+              if(event.target.value == bugraw[data][0]){
+
+                    this.bugShow =  bugraw[data][1]
+
+                    if(this.bugShow == ""){
+                        this.bugShow = "無災情"
+                    }
+              }
+             
+            }
+            
+        }
 
      },
      

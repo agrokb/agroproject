@@ -15,7 +15,9 @@ export default {
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
   ],
-
+  env: {
+    baseUrl: 'http://localhost:3000/api/data.coa.gov.tw/Service/OpenData/EIR3010304.aspx'
+  },
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
   ],
