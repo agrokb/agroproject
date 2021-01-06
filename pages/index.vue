@@ -1,12 +1,11 @@
 <template>
 <div class="container m-5">
-    <h1 class="title">水稻病蟲害警報</h1>
+    <h4 class="title is-4">台梗九號病蟲害警報</h4>
     <div class="alarm">
-     白葉枯病： {{  blsShow }}  </br>
-     褐飛蝨：   {{  bugShow }}
+        請選擇縣市
     </div>
     <div class="select">
-    <select v-model="selected" @change="onChange($event)">
+        <select v-model="selected" @change="onChange($event)">
             <option disabled value="">Please select one</option>
             <option value = "新北市">新北市</option>
             <option value = "桃園縣">桃園縣</option>
@@ -55,115 +54,117 @@
             <option value = "澎湖縣">澎湖縣</option>
             <option value = "基隆市">基隆市</option>
             <option value = "臺北市">臺北市</option>
-    </select>
+        </select>
     </div>
-    <h1 class="title">天氣資訊</h1>
-        {{  postion.latitude  }}
-        {{  postion.longitude }}
-    <h1 class="title">線上診斷</h1>
+    <div class="table-container">
+        <table class="table" v-if="selected != ''">
+            <thead>
+                <tr>
+                    <th>白葉枯病  </th>
+                    <th>褐飛蝨    </th>
+                </tr>
+                <tr> 
+                    <td>{{  blsShow }}</td>
+                    <td>{{  bugShow }}</td>
+                </tr>
+            </thead>
+        </table>
+        </div>
+        <div class="buttons">
+            <NuxtLink to="/infectpart">
+                <button class="button is-link">線上診斷</button>
+            </NuxtLink>
+        </div>
+    </div>
 </div>
 </template>
 
 <script>
-import axios from '../.nuxt/axios';
+import axios from "../.nuxt/axios";
 export default {
-     data() {
-         return {
-             SourcericeAlarmDatas: '',
-             postion:'',
-             bls:'',
-             bug:'',
-             selected:'',
-             blsShow:'',
-             bugShow:''
-         }
-     },
-     created(){
-       this.scrAlarmDara()
-       navigator.geolocation.getCurrentPosition(this.positionSuccess)
-     },
-     methods:{
-         scrAlarmDara:async function(){
-             let blsData = null
-             await this.$axios.$get(process.env.baseUrl).then((res) => { 
-                    let blsResult = []
-                    let bugResult = []
-                for (let i = 2; i < 4; i++) {
-                    // data get
-                    let rawData = res[i] 
-                    //delete unnecessery data
-                    delete rawData.id
-                    delete rawData.BUG
-                    delete rawData.LIGHTS01
-                    delete rawData.LIGHTS02
-                    delete rawData.LIGHTS03
-                    delete rawData.LIGHTS04
-                    delete rawData.LIGHTS05
-                    delete rawData.LIGHTS06
+  data() {
+    return {
+      SourcericeAlarmDatas: "",
+      postion: "",
+      bls: "",
+      bug: "",
+      selected: "",
+      blsShow: "",
+      bugShow: "",
+    };
+  },
+  created() {
+    this.scrAlarmData();
+    navigator.geolocation.getCurrentPosition(this.positionSuccess);
+  },
+  methods: {
+    scrAlarmData: async function() {
+      let blsData = null;
+      await this.$axios.$get(process.env.baseUrl).then(res => {
+        let blsResult = [];
+        let bugResult = [];
+        for (let i = 2; i < 4; i++) {
+          // data get
+          let rawData = res[i];
+          //delete unnecessery data
+          delete rawData.id;
+          delete rawData.BUG;
+          delete rawData.LIGHTS01;
+          delete rawData.LIGHTS02;
+          delete rawData.LIGHTS03;
+          delete rawData.LIGHTS04;
+          delete rawData.LIGHTS05;
+          delete rawData.LIGHTS06;
 
-                   for (const data in rawData) {
-                       //city name
-                        let cityData =  rawData[data].split(/[\":]+/)
+          for (const data in rawData) {
+            //city name
+            let cityData = rawData[data].split(/[\":]+/);
 
-                        if (cityData[1] = "ADADAD"){
-                            cityData[1] = ""
-                        }
-                        const resultData = [cityData[0].trim(),cityData[1].trim()]
-                        if(i == 2){
-                            blsResult.push(resultData)
-                        }
-                        if(i == 3){
-                            bugResult.push(resultData)
-                        }
-
-                   }
-                    //bls data get
-                    this.bls = blsResult
-                    this.bug = bugResult
-                }
-
-
-
-           })
-         },
-         positionSuccess(pos){
-                this.postion = pos.coords;
-         },
-         onChange(event) {
-            let blsraw = this.bls
-            let bugraw = this.bug
-            for (const data in blsraw) {
-              // this.blsShow =[event.target.value,blsraw[data][0]]
-
-              if(event.target.value == blsraw[data][0]){
-
-                    this.blsShow =  blsraw[data][1]
-
-                    if(this.blsShow == ""){
-                        this.blsShow = "無災情"
-                    }
-              }
+            if ((cityData[1] = "ADADAD")) {
+              cityData[1] = "";
             }
-            for (const data in bugraw) {
-
-              if(event.target.value == bugraw[data][0]){
-
-                    this.bugShow =  bugraw[data][1]
-
-                    if(this.bugShow == ""){
-                        this.bugShow = "無災情"
-                    }
-              }
-             
+            const resultData = [cityData[0].trim(), cityData[1].trim()];
+            if (i == 2) {
+              blsResult.push(resultData);
             }
-            
+            if (i == 3) {
+              bugResult.push(resultData);
+            }
+          }
+          //bls data get
+          this.bls = blsResult;
+          this.bug = bugResult;
         }
+      });
+    },
+    positionSuccess(pos) {
+      this.postion = pos.coords;
+    },
+    onChange(event) {
+      let blsraw = this.bls;
+      let bugraw = this.bug;
+      for (const data in blsraw) {
+        if (event.target.value == blsraw[data][0]) {
+          this.blsShow = blsraw[data][1];
 
-     },
-     
-}
+          if (this.blsShow == "") {
+            this.blsShow = "無災情";
+          }
+        }
+      }
+      for (const data in bugraw) {
+        if (event.target.value == bugraw[data][0]) {
+          this.bugShow = bugraw[data][1];
+
+          if (this.bugShow == "") {
+            this.bugShow = "無災情";
+          }
+        }
+      }
+    },
+  },
+};
 </script>
 
 <style>
-
 </style>
