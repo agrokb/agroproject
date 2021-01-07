@@ -18,7 +18,6 @@
                     基部
                 </label>
             </div>
-            <span>Picked: {{ picked }}</span>
             <div class="buttons">
                 <NuxtLink :to="{name: 'infectimage-category', params: { category:picked } }">
                      <button class="button is-link">確認</button>
