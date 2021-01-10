@@ -19,7 +19,7 @@
                 </label>
             </div>
             <div class="buttons">
-                <NuxtLink :to="{name: 'infectimage-category', params: { category:picked } }">
+                <NuxtLink :to="{name: 'infectimage-category', params: { category:picked }}">
                      <button class="button is-link">確認</button>
                 </NuxtLink>
             </div>

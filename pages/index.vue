@@ -5,7 +5,7 @@
       請選擇縣市
     </div>
     <SelectList @my-select="onChange($event)" />
-    <LazyTable  v-if="location != ''" v-bind:info="[blsShow,bugShow]"/>
+    <LazyTable v-if="location != ''" v-bind:info="[blsShow,bugShow]" />
     <div class="buttons mt-5">
       <NuxtLink to="/infectpart">
         <button class="button is-link">線上診斷</button>
@@ -25,12 +25,11 @@
         bug: "",
         blsShow: "",
         bugShow: "",
-        location:"",
+        location: "",
       };
     },
     created() {
       this.scrAlarmData();
-      navigator.geolocation.getCurrentPosition(this.positionSuccess);
     },
     methods: {
       scrAlarmData: async function () {
@@ -72,13 +71,9 @@
           }
         });
       },
-      positionSuccess(pos) {
-        this.postion = pos.coords;
-      },
       getSeletedData(allData, locationLoaction, showData) {
         let showPart = "";
         for (const data in allData) {
-
           if (locationLoaction == allData[data][0]) {
             showPart = allData[data][1];
             if (showPart == "") {
@@ -93,9 +88,8 @@
         let location = this.location;
         let blsRaw = this.bls;
         let bugRaw = this.bug;
-        let blsShow = this.blsShow
-        let bugShow = this.bugShow
-
+        let blsShow = this.blsShow;
+        let bugShow = this.bugShow;
         this.blsShow = this.getSeletedData(blsRaw, location, blsShow);
         this.bugShow = this.getSeletedData(bugRaw, location, bugShow);
       },
