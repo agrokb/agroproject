@@ -3,7 +3,6 @@
         <LazyImageleaf      v-if="this.$route.params.category =='leaf'" @my-select="onChange($event)" />
         <LazyImageleafbase  v-if="this.$route.params.category =='leafbase'" />
         <LazyImagebase      v-if="this.$route.params.category =='base'"/>
-        {{ checkData[1] }}
     </div>
 </template>
 <script>
