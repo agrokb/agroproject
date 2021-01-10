@@ -2,7 +2,7 @@
     <div>
         {{ this.$route.query }}
         <ul id="example-1">
-            <li v-for="item in checkDatas" v-bind:key="item.id">
+            <li v-for="item in sendurl" v-bind:key="item.id">
                 {{ item }}
                 {{ item.id }}
             </li>
@@ -16,27 +16,13 @@ export default {
             items: [
                
             ],
-            checkDatas:this.$route.query.checkData
+            sendurl:this.$route.query.sendurl
         }
     },
     created(){
-        this.getData(checkDatas)
     },
     methods:{
-        // getData(data){
-        //     data.forEach(e => {
-        //         let e = e.trim();
-        //         if(e == "白葉枯病"){
-                    
-        //         } 
-        //         if(e == "白葉枯病"){
-                    
-        //         } 
-        //         if(e == "白葉枯病"){
-                    
-        //         } 
-        //     });
-        // }
+
     }
 }
 </script>
