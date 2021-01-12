@@ -2,21 +2,27 @@
     <div>
         <h3 title="subtitle">請選擇</h3>
         <label class="checkbox">
-        <input type="checkbox" name="shbl" value="白葉枯病" v-model="checkname" @change="send">
+        <input type="checkbox" name="shbl" value="白葉枯病" @change="send($event)">
         <figure class="image is-128x128">
             <img src="https://bulma.io/images/placeholders/128x128.png">
         </figure>
         </label>
         <br>
         <label class="checkbox">
-        <input type="checkbox" name="bls" value="文枯病" v-model="checkname" @change="send">
+        <input type="checkbox" name="bls" value="紋枯病" @change="send($event)">
         <figure class="image is-128x128">
             <img src="https://bulma.io/images/placeholders/128x128.png">
         </figure>
         </label>
         <br>
         <label class="checkbox">
-        <input type="checkbox" name="bug" value="褐飛蝨" v-model="checkname" @change="send">
+        <input type="checkbox" name="bug" value="褐飛蝨" @change="send($event)">
+        <figure class="image is-128x128">
+            <img src="https://bulma.io/images/placeholders/128x128.png">
+        </figure>
+        </label>
+         <label class="checkbox">
+        <input type="checkbox" name="bug-1" value="褐飛蝨-1" @change="send($event)">
         <figure class="image is-128x128">
             <img src="https://bulma.io/images/placeholders/128x128.png">
         </figure>
@@ -27,12 +33,21 @@
 export default {
   data() {
       return {
-       checkname:[],
+        checkData:{
+                        "白葉枯病":false,
+                        "紋枯病":false,
+                        "褐飛蝨":false,
+                        "褐飛蝨-1":false
+                }
       }
   },
   methods: {
-      send(){
-          this.$emit("my-select", this.checkname);
+      send($event){
+          let items = this.checkname;
+          $event.preventDefault();
+          //split
+          this.checkData[$event.target.value] = $event.target.checked
+          this.$emit("my-select", this.checkData);
       }
   },
 }

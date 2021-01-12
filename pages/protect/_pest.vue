@@ -1,10 +1,9 @@
 <template>
     <div>
-        {{ this.$route.query }}
-        <ul id="example-1">
-            <li v-for="item in sendurl" v-bind:key="item.id">
-                {{ item }}
-                {{ item.id }}
+        <h3 class="subtitle">可能的病蟲害</h3>
+        <ul>
+            <li v-for="(item,index) in rawUrl">
+                <NuxtLink :to="{name: 'prescription-pest', params: { pest:item.pest }}">{{ item.pest}}</NuxtLink>
             </li>
         </ul>
     </div>
@@ -13,16 +12,19 @@
 export default {
     data() {
         return {
-            items: [
-               
-            ],
-            sendurl:this.$route.query.sendurl
+            rawUrl:{}
         }
     },
     created(){
+        this.createArray()
     },
     methods:{
-
-    }
+        createArray(){
+            let dataArray = this.$route.query.sendurl;
+            dataArray.forEach((value, index) => {
+                this.rawUrl[index] = {"pest":value}
+            })
+        }
+    },
 }
 </script>

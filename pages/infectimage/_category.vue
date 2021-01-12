@@ -3,10 +3,9 @@
         <LazyImageleaf      v-if="this.$route.params.category =='leaf'" @my-select="onChange($event)" />
         <LazyImageleafbase  v-if="this.$route.params.category =='leafbase'" @my-select="onChange($event)" />
         <LazyImagebase      v-if="this.$route.params.category =='base'" @my-select="onChange($event)"/>
-        <NuxtLink :to="{name: 'protect-pest', query: { sendurl }}">
-          <button class="button is-link">確定送出</button>
-       </NuxtLink>
-        {{ checkdata }}
+       
+        <NuxtLink :to="{name: 'protect-pest', query: { sendurl }}" class="button is-link is-black">確定送出</NuxtLink>
+       
         {{ sendurl   }}
     </div>
 </template>
@@ -25,6 +24,7 @@ export default {
             this.checkdata = $event;
             let items = this.checkdata;
             this.rawurl = [];
+            this.sendurl = [];
             for (let item in items) {
  
                 if(items[item] == true){
@@ -32,14 +32,18 @@ export default {
                      item = item[0];
                      item.trim();
                      console.log(item);
-                    this.rawurl.push(item.trim())
+                     this.rawurl.push(item.trim())
                 }
             }
-           const rawurl =  this.rawurl;
-           let sendurl = rawurl.reduce((unique,item)=>unique.includes(item) ? unique : [...unique,item],[])
-           this.sendurl = sendurl;
-
-        }
+           let rawurl    =  this.rawurl;
+           let partUrl   = rawurl.reduce((unique,item)=>unique.includes(item) ? unique : [...unique,item],[]);
+           let itemArray = [];
+           
+           partUrl.forEach((value, index) => {
+                 itemArray.push(value);
+               })
+           this.sendurl = itemArray;
+        },
     },
 }
 </script>
