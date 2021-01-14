@@ -35,7 +35,8 @@ export default {
     // https://go.nuxtjs.dev/bootstrap
     '@nuxtjs/bulma',
     '@nuxtjs/proxy',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/pwa'
   ],
   proxy:{
     '/api/':{
@@ -54,5 +55,15 @@ export default {
         }
       }
     },
+  },
+  pwa: {
+    manifest: {
+      name: 'Online Disease and Pest diagnosis',
+      lang: 'en',
+      useWebmanifestExtension: false,
+      icon:{
+        source:"../agro/static/favicon.ico"
+      },
+    }
   }
 }

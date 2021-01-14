@@ -14,9 +14,10 @@
     "@nuxtjs/proxy": "^2.1.0",
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
-    "webpack":"^4.44.2"
+    "webpack": "^4.44.2"
   },
   "devDependencies": {
+    "@nuxtjs/pwa": "^3.3.4",
     "sass": "^1.32.4",
     "sass-loader": "^10.1.1"
   }
