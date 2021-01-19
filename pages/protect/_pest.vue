@@ -3,7 +3,7 @@
         <h3 class="subtitle">可能的病蟲害</h3>
         <ul>
             <li v-for="(item,index) in rawUrl">
-                <NuxtLink :to="{name: 'prescription-pest', params: { pest:item.pest }}">{{ item.pest}}</NuxtLink>
+                <NuxtLink :to="{name: 'prescription-pest', params: { pest:item.pest }}"><span class="ddd">{{ item.pest }}</span></NuxtLink>
             </li>
         </ul>
     </div>
@@ -28,3 +28,9 @@ export default {
     },
 }
 </script>
+<style scoped>
+span.ddd{
+    font-size: 30px;
+}
+</style>
+

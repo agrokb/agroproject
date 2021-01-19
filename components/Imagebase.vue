@@ -3,28 +3,23 @@
         <h3 title="subtitle">請選擇</h3>
         <label class="checkbox">
         <input type="checkbox" name="shbl" value="白葉枯病" @change="send($event)">
-        <figure class="image is-128x128">
-            <img src="https://bulma.io/images/placeholders/128x128.png">
+        <figure class="image is-256x256">
+            <img src="https://www.tndais.gov.tw/upload/tndais/images/news/13825/10448b.jpg">
         </figure>
         </label>
         <br>
         <label class="checkbox">
         <input type="checkbox" name="bls" value="紋枯病" @change="send($event)">
-        <figure class="image is-128x128">
-            <img src="https://bulma.io/images/placeholders/128x128.png">
+        <figure class="image is-256x256">
+            <img src="https://www.jeinou.com/assets_c/2016/03/201603ine_mongare_2-thumb-179x238-19371.jpg">
         </figure>
         </label>
         <br>
-        <label class="checkbox">
+        <label class="checkbox mt-5">
+            <br> 
         <input type="checkbox" name="bug" value="褐飛蝨" @change="send($event)">
-        <figure class="image is-128x128">
-            <img src="https://bulma.io/images/placeholders/128x128.png">
-        </figure>
-        </label>
-         <label class="checkbox">
-        <input type="checkbox" name="bug-1" value="褐飛蝨-1" @change="send($event)">
-        <figure class="image is-128x128">
-            <img src="https://bulma.io/images/placeholders/128x128.png">
+        <figure class="image is-256x256">
+            <img src="https://www.tndais.gov.tw/upload/tndais/images/news/13754/10348b_.jpg">
         </figure>
         </label>
     </div>

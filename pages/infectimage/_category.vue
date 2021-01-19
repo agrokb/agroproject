@@ -5,8 +5,6 @@
         <LazyImagebase      v-if="this.$route.params.category =='base'" @my-select="onChange($event)"/>
        
         <NuxtLink :to="{name: 'protect-pest', query: { sendurl }}" class="button is-link is-black">確定送出</NuxtLink>
-       
-        {{ sendurl   }}
     </div>
 </template>
 <script>
@@ -47,3 +45,8 @@ export default {
     },
 }
 </script>
+<style scoped>
+.font{
+    font-size: 40px;
+}
+</style>

@@ -4,14 +4,15 @@
         <label class="checkbox">
         <input type="checkbox" name="shbl" value="白葉枯病" @change="send($event)">
         <figure class="image is-128x128">
-            <img src="https://bulma.io/images/placeholders/128x128.png">
+            <img src="https://www.tndais.gov.tw/upload/tndais/images/news/13825/10448a.jpg">
         </figure>
         </label>
         <br>
-        <label class="checkbox">
+        <label class="checkbox mt-5">
+        <br>
         <input type="checkbox" name="bls" value="紋枯病" @change="send($event)">
         <figure class="image is-128x128">
-            <img src="https://bulma.io/images/placeholders/128x128.png">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPnZ3qkuRlmbHw-KKD5TzrM-qnMyRHLh_XhA&usqp=CAU">
         </figure>
         </label>
         <br>
@@ -21,6 +22,7 @@
             <img src="https://bulma.io/images/placeholders/128x128.png">
         </figure>
         </label>
+        <br>
          <label class="checkbox">
         <input type="checkbox" name="bug-1" value="褐飛蝨-1" @change="send($event)">
         <figure class="image is-128x128">
