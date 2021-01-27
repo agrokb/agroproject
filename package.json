@@ -19,7 +19,7 @@
     "webpack": "^4.44.2"
   },
   "devDependencies": {
-    "@nuxtjs/pwa": "^3.3.4",
+    "@nuxtjs/pwa": "^3.3.5",
     "sass": "^1.32.4",
     "sass-loader": "^10.1.1"
   }
