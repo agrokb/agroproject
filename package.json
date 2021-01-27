@@ -5,7 +5,8 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "heroku-postbuild":"yarn build"
   },
   "engines": {
     "node": "12.16.2"
