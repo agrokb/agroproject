@@ -3,7 +3,7 @@ export default {
   head: {
     title: 'agro',
     router: {
-      base: '/agroproject/dist'
+      base: '/<repository-name>/'
     },
     meta: [
       { charset: 'utf-8' },
