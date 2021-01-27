@@ -3,7 +3,7 @@ export default {
   head: {
     title: 'agro',
     router: {
-      base: 'agroproject'
+      base: '/agroproject/'
     },
     meta: [
       { charset: 'utf-8' },
