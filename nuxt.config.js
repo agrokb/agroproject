@@ -60,10 +60,7 @@ export default {
     manifest: {
       name: 'Online Disease and Pest diagnosis',
       lang: 'en',
-      useWebmanifestExtension:true,
-      icon:{
-        source:"bug.png"
-      },
+      useWebmanifestExtension:false,
     }
   }
 }
