@@ -85,7 +85,7 @@
             </div>
             <div class="dropdown-menu" id="dropdown-menu2" role="menu">
                 <div class="dropdown-content">
-                <a href="" class="dropdown-item">
+                <a href="https://www.cwb.gov.tw/V8/C/W/week.html" class="dropdown-item">
                     中央氣象局
                 </a>
                 </div>

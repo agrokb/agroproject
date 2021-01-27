@@ -60,9 +60,9 @@ export default {
     manifest: {
       name: 'Online Disease and Pest diagnosis',
       lang: 'en',
-      useWebmanifestExtension: false,
+      useWebmanifestExtension:true,
       icon:{
-        source:"../agro/static/favicon.ico"
+        source:"favicon.ico"
       },
     }
   }

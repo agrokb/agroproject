@@ -1,4 +1,5 @@
 <template>
+  <div class="container m-5">
     <div>
         <h3 class="subtitle">可能的病蟲害</h3>
         <ul>
@@ -7,6 +8,7 @@
             </li>
         </ul>
     </div>
+  </div>
 </template>
 <script>
 export default {

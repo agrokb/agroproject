@@ -16,19 +16,6 @@
         </figure>
         </label>
         <br>
-        <label class="checkbox">
-        <input type="checkbox" name="bug" value="褐飛蝨" @change="send($event)">
-        <figure class="image is-128x128">
-            <img src="https://bulma.io/images/placeholders/128x128.png">
-        </figure>
-        </label>
-        <br>
-         <label class="checkbox">
-        <input type="checkbox" name="bug-1" value="褐飛蝨-1" @change="send($event)">
-        <figure class="image is-128x128">
-            <img src="https://bulma.io/images/placeholders/128x128.png">
-        </figure>
-        </label>
     </div>
 </template>
 <script>

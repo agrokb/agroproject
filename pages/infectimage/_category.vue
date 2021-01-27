@@ -1,4 +1,5 @@
 <template>
+  <div class="container m-5">
     <div>
         <LazyImageleaf      v-if="this.$route.params.category =='leaf'" @my-select="onChange($event)" />
         <LazyImageleafbase  v-if="this.$route.params.category =='leafbase'" @my-select="onChange($event)" />
@@ -6,6 +7,7 @@
        
         <NuxtLink :to="{name: 'protect-pest', query: { sendurl }}" class="button is-link is-black">確定送出</NuxtLink>
     </div>
+ </div>
 </template>
 <script>
 export default {

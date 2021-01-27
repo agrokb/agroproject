@@ -1,4 +1,5 @@
 <template>
+  <div class="container m-5">
     <div>
         <h4 class="subtitle is-4">用量估算</h4>
         <h5 class="subtitle is-5">輸入噴灑面積</h5>
@@ -13,6 +14,7 @@
         <span>結果:{{ result }}公升</span>
         <h5 class="subtitle is-5">注意事項</h5>
     </div>
+</div>
 </template>
 <script>
 export default {

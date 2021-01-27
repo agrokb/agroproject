@@ -1,4 +1,5 @@
 <template>
+  <div class="container m-5">
     <div>
         <div class="title">部位選擇</div>
         <div class="select is-multiple">
@@ -25,6 +26,7 @@
                 </NuxtLink>
             </div>
         </div>
+    </div>
     </div>
 </template>
 <script>
