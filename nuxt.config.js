@@ -62,7 +62,7 @@ export default {
       lang: 'en',
       useWebmanifestExtension:true,
       icon:{
-        source:"favicon.ico"
+        source:"bug.png"
       },
     }
   }
