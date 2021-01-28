@@ -34,8 +34,7 @@
     methods: {
       scrAlarmData: async function () {
         let blsData = null;
-        await this.$axios.$get(process.env.baseUrl,{headers: {"Access-Control-Allow-Origin": process.env.baseUrl}
-          }).then(res => {
+        await this.$axios.$get(process.env.baseUrl).then(res => {
           let blsResult = [];
           let bugResult = [];
           for (let i = 2; i < 4; i++) {

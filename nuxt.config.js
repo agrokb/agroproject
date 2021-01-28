@@ -18,7 +18,7 @@ export default {
   ],
   env: {
     //baseUrl: 'http://localhost:3000/api/data.coa.gov.tw/Service/OpenData/EIR3010304.aspx',
-    baseUrl:'/api/Service/OpenData/EIR3010304.aspx'
+    baseUrl:'/api'
   },
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
@@ -39,14 +39,14 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa'
   ],
-  proxy:{
-    '/api/':{
-      target:'https://data.coa.gov.tw/Service/OpenData/EIR3010304.aspx',
-      changeOrigin: true,
-      secure: false,
-      pathRewrite: {'^/api/': ''},
-    }
-  },
+  // proxy:{
+  //   '/apir/':{
+  //     target:'https://data.coa.gov.tw/Service/OpenData/EIR3010304.aspx',
+  //     changeOrigin: true,
+  //     secure: false,
+  //     pathRewrite: {'^/api/': ''},
+  //   }
+  // },
   axios: {
     proxy: true
   },

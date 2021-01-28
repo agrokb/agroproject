@@ -16,7 +16,7 @@
 </template>
 <script>
 export default {
-    props: {info:String},
+    props: ['info'],
     data() {
         return {
            
