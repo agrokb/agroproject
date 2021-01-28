@@ -1,6 +1,6 @@
 <template>
   <div class="container m-5">
-    <h4 class="title is-4">台梗九號病蟲害警報</h4>
+    <h3 class="title is-3">台梗九號病蟲害警報</h3>
     <div class="alarm">
       請選擇縣市
     </div>
@@ -34,7 +34,8 @@
     methods: {
       scrAlarmData: async function () {
         let blsData = null;
-        await this.$axios.$get(process.env.baseUrl).then(res => {
+        await this.$axios.$get(process.env.baseUrl,{headers: {"Access-Control-Allow-Origin": process.env.baseUrl}
+          }).then(res => {
           let blsResult = [];
           let bugResult = [];
           for (let i = 2; i < 4; i++) {

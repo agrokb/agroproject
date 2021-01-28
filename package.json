@@ -5,8 +5,7 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate",
-    "heroku-postbuild":"yarn build"
+    "generate": "nuxt generate"
   },
   "engines": {
     "node": "12.16.2"
@@ -17,6 +16,8 @@
     "@nuxtjs/proxy": "^2.1.0",
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.6.5",
+    "express": "^4.17.1",
+    "firebase-tools": "^9.2.2",
     "nuxt": "^2.14.6",
     "webpack": "^4.44.2"
   },
